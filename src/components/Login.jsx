@@ -1,6 +1,5 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/authContext";
-import LoadingOverlay from "react-loading-overlay";
 import { NavLink } from "react-router-dom";
 
 export default function Login() {
@@ -50,26 +49,27 @@ export default function Login() {
           </span>
         </NavLink>
       </div>
-      <LoadingOverlay active={isLoading} spinner text="Logging in...">
-        <form className="login" onSubmit={handleSubmit}>
-          <label className="label-text">email: </label>
-          <input
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-            value={email}
-          />
+      <form className="login" onSubmit={handleSubmit}>
+        <label className="label-text">email: </label>
+        <input
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          value={email}
+        />
 
-          <label className="label-text">password: </label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            value={password}
-          />
+        <label className="label-text">password: </label>
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          value={password}
+        />
 
-          <button>Log in</button>
-          {error && <div className="error">{error}</div>}
-        </form>
-      </LoadingOverlay>
+        <button>Log in</button>
+        {error && <div className="error">{error}</div>}
+      </form>
     </>
   );
 }
+
+
+

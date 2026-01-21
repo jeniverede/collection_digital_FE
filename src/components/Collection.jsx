@@ -9,8 +9,6 @@ import Modal from "@mui/material/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
-import LoadingOverlay from "react-loading-overlay";
-// Documentation for this library: https://styled-components.com/docs/basics#motivation
 
 const CardsContainer = styled.div`
   display: flex;
@@ -90,11 +88,12 @@ export default function Collection() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [collection_pic, setCollection_pic] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const [isLoading, setIsLoading] = useState(false);
+
   const deployedAPI = "https://collectiondigitalbe.onrender.com/collections";
-  const localAPI = "http://localhost:7070/collections";
 
   const resetFields = () => {
     setName("");
@@ -105,8 +104,9 @@ export default function Collection() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      /////////////////////// Step 1: Send request for image upload///////////////////////////////
+      // Step 1: Upload image
       const formData = new FormData();
       formData.append("image", collection_pic.file);
 
@@ -129,58 +129,43 @@ export default function Collection() {
         return;
       }
 
-      if (imageResponse.ok) {
-        errorNotification(imageData.error);
-        setIsLoading(false);
-      }
-      // Set the Cloudinary URL
       const cloudinaryUrl = imageData.cloudinaryUrl;
-      /////////////////////// END OF STEP 1 ///////////////////////////////
 
-      /////////////////////// Step 2: Send request for collection details ////////////////////////
-      try {
-        const collectionResponse = await fetch(deployedAPI, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json; charset=UTF-8",
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ name, description, cloudinaryUrl }),
-        });
+      // Step 2: Save collection
+      const collectionResponse = await fetch(deployedAPI, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+          authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name, description, cloudinaryUrl }),
+      });
 
-        const collectionData = await collectionResponse.json();
+      const collectionData = await collectionResponse.json();
 
-        console.log("COLL RES", collectionData);
-
-        if (!collectionResponse.ok) {
-          errorNotification(collectionData.error);
-          setIsLoading(false);
-          return;
-        }
-
-        /////////////////////// END OF STEP 2 ////////////////////////
+      if (!collectionResponse.ok) {
+        errorNotification(collectionData.error);
         setIsLoading(false);
-        setFlag(!flag);
-        successfulNotification();
-        resetFields();
-        handleClose();
-      } catch (collectionError) {
-        console.error("Collection Error:", collectionError);
+        return;
       }
-    } catch (imageError) {
-      console.error("Image Error:", imageError);
+
+      setIsLoading(false);
+      setFlag(!flag);
+      successfulNotification();
+      resetFields();
+      handleClose();
+    } catch (err) {
+      console.error(err);
+      setIsLoading(false);
+      errorNotification("Something went wrong!");
     }
   };
 
   const handleImageChange = (e) => {
-    // Get the selected image file
     const file = e.target.files[0];
-
-    // You can use FileReader to display a preview of the selected image
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        // Set the selected image and its preview
         setCollection_pic({
           file,
           preview: event.target.result,
@@ -190,10 +175,8 @@ export default function Collection() {
     }
   };
 
-  console.log("@@@@@@@@@@", collections);
-
   const deleteCollection = async (id) => {
-    await fetch(`https://collectiondigitalbe.onrender.com/collections/${id}`, {
+    await fetch(`${deployedAPI}/${id}`, {
       method: "DELETE",
       headers: {
         authorization: `Bearer ${token}`,
@@ -207,14 +190,11 @@ export default function Collection() {
   return (
     <div className="collection_header">
       <div className="heading">
-        {token !== null && (
-          <>
-            <h1 className="hello">Hello, {decodedToken?.name}!</h1>
-          </>
-        )}
+        {token && <h1 className="hello">Hello, {decodedToken?.name}!</h1>}
         <h1>Welcome to your collections</h1>
+
         <CardsContainer>
-          {collections ? (
+          {collections && collections.length > 0 ? (
             collections.map((collection) => (
               <Link to={`/collection/${collection._id}`} key={collection._id}>
                 <Card>
@@ -253,45 +233,44 @@ export default function Collection() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={style}>
-              <LoadingOverlay active={isLoading} spinner text="Uploading...">
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                  <label>
-                    <h3>Name of collection:</h3>
-                    <input
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
+              <form onSubmit={handleSubmit} encType="multipart/form-data">
+                <label>
+                  <h3>Name of collection:</h3>
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </label>
+                <label>
+                  <h3>Description:</h3>
+                  <input
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  />
+                </label>
+                <label>
+                  <h3>Select pic:</h3>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    name="collection_pic"
+                    onChange={handleImageChange}
+                  />
+                  {collection_pic && (
+                    <img
+                      src={collection_pic.preview}
+                      alt="selected img"
+                      style={{ maxWidth: "100%", maxHeight: "200px" }}
                     />
-                  </label>
-                  <label>
-                    <h3>Description:</h3>
-                    <input
-                      value={description}
-                      onChange={(e) => setDescription(e.target.value)}
-                    />
-                  </label>
-                  <label>
-                    <h3>Select pic:</h3>
-                    <input
-                      type="file"
-                      accept="image/*"
-                      name="collection_pic"
-                      onChange={handleImageChange}
-                    />
-                    {collection_pic && (
-                      <img
-                        src={collection_pic.preview}
-                        alt="selected img"
-                        style={{ maxWidth: "100%", maxHeight: "200px" }}
-                      />
-                    )}
-                  </label>
-                  <button className="button-1" type="submit">
-                    Save Collection
-                  </button>
-                </form>
-              </LoadingOverlay>
+                  )}
+                </label>
+                <button className="button-1" type="submit">
+                  Save Collection
+                </button>
+              </form>
             </Box>
           </Modal>
+
 
           <ToastContainer
             position="bottom-center"
@@ -310,3 +289,4 @@ export default function Collection() {
     </div>
   );
 }
+

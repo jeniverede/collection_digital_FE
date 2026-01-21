@@ -7,7 +7,6 @@ import Modal from "@mui/material/Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
-import LoadingOverlay from "react-loading-overlay";
 // Documentation for this library: https://styled-components.com/docs/basics#motivation
 
 // Collection page 2, no CSS file
@@ -229,26 +228,26 @@ export default function CollectionView() {
         <CardsContainer>
           {selectedCollectionItems?.length
             ? selectedCollectionItems.map((item) => (
-                <Link to={`/item/${item._id}`} key={item._id}>
-                  <div>
-                    {console.log("item.cloudinaryUrl", item)}
-                    <Card>
-                      <CardImage src={item.cloudinaryUrl} alt="item picture" />
-                      <ItemName>{item.object_type}</ItemName>
-                      <CardDescription>{item.artist_maker}</CardDescription>
-                      <button
-                        className="button-delete"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          deleteItem(item._id);
-                        }}
-                      >
-                        Delete Item
-                      </button>
-                    </Card>
-                  </div>
-                </Link>
-              ))
+              <Link to={`/item/${item._id}`} key={item._id}>
+                <div>
+                  {console.log("item.cloudinaryUrl", item)}
+                  <Card>
+                    <CardImage src={item.cloudinaryUrl} alt="item picture" />
+                    <ItemName>{item.object_type}</ItemName>
+                    <CardDescription>{item.artist_maker}</CardDescription>
+                    <button
+                      className="button-delete"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        deleteItem(item._id);
+                      }}
+                    >
+                      Delete Item
+                    </button>
+                  </Card>
+                </div>
+              </Link>
+            ))
             : "No items in this collection yet!"}
         </CardsContainer>
       </h3>

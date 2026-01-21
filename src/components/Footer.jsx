@@ -54,7 +54,7 @@ export default function Footer() {
               }}
             >
               <p className="disclaim">
-                The Data used on this Website is provided by V&A Collection
+                The data for search results used on this Website is provided by V&A Collection.
                 Click{" "}
                 <a
                   href="https://www.vam.ac.uk/collections"
@@ -63,7 +63,7 @@ export default function Footer() {
                   {" "}
                   here
                 </a>{" "}
-                to access the Data
+                to access the data
               </p>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function Footer() {
                 reserved.
               </p>
               <p style={{ marginTop: "4px" }}>
-                Rights to all collection images & data belong to the V&A Museum
+                Rights to all collection images & data belong to the V&A Museum,
                 London.
               </p>
               <p style={{ marginTop: "3px" }}>
