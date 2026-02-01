@@ -6,7 +6,7 @@
 
 /* Font-face rules outside of :root */
 @font-face {
-  font-family: var(--primary-font);
+  font-family: "Montserrat";
   src: local("Montserrat-Regular"),
     url("/src/assets/fonts/Montserrat-Regular.woff2") format("woff2"),
     url("/src/assets/fonts/Montserrat-Regular.woff") format("woff");
@@ -15,12 +15,12 @@
 }
 
 @font-face {
-  font-family: var(--primary-font);
+  font-family: "Montserrat";
   src: local("Montserrat-SemiBold"),
     url("/src/assets/fonts/Montserrat-SemiBold.woff2") format("woff2"),
     url("/src/assets/fonts/Montserrat-SemiBold.woff") format("woff");
   font-weight: 600;
-  font-style: bold;
+  font-style: normal;
 }
 
 body {
@@ -28,6 +28,10 @@ body {
   margin: auto;
   background-color: #242424;
   font-family: var(--primary-font);
+}
+
+h1, strong, b {
+  font-weight: 600; /* SemiBold for emphasis */
 }
 
 /* Colors 
