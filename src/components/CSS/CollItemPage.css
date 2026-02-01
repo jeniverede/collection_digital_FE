@@ -114,6 +114,7 @@ hr {
 
   .card {
   flex-direction: column;
+  width: 100%;
   }
 
   .actions_container {
