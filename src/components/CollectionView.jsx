@@ -80,14 +80,14 @@ export default function CollectionView() {
         </CardsContainer>
       </div>
       <div>
-        <p style={{ marginTop: 20, color: "grey" }}>
+        <p style={{ margin: 20, color: "grey" }}>
           * This is a read-only demo of collection items. Actions like add, edit, or delete are intentionally disabled.
         </p>
       </div>
       <div>
         <Link
           to="/collection"
-          style={{ color: "white", margin: "20px", display: "inline-block" }}
+          style={{ color: "white", margin: "10px", display: "inline-block" }}
         >
           ← Back to all collections
         </Link>
