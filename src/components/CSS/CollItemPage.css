@@ -113,11 +113,12 @@ hr {
   }
 
   .card {
-  width: 100%;
+    width: 100%;
   }
 
   .actions_container {
-    width: 100%;    /* ensures full width */
+    width: 100%; /* ensures full width */
+    align-items: center; /* if you want content centered inside */
   }
 }
 
