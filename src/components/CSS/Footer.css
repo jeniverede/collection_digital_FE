@@ -135,13 +135,36 @@ a:hover {
 /* mobile */
 @media (max-width: 600px) {
   .sb__footer {
-    flex-direction: column; /* stack columns on mobile */
-    align-items: center; /* optional: center children horizontally */
-    gap: 1em; /* optional: spacing between stacked children */
+    flex-direction: column; /* stack main columns */
+    align-items: center;
+    gap: 1em;
+    width: 100%; /* ensure it doesn't overflow */
+    box-sizing: border-box;
+    padding: 0 1em; /* optional side padding */
   }
-  .sb__footer-heading h1 {
-    font-size: 27px;
-    line-height: 38px;
+
+  .sb__footer-links {
+    flex-direction: column; /* stack footer link columns */
+    align-items: center;
+    width: 100%;
+    gap: 1em;
+  }
+
+  .sb__footer-links_div {
+    width: 100%; /* make each column full width */
+    max-width: 400px; /* optional max width */
+    margin: 0.5em 0;
+  }
+
+  .sb__footer-below {
+    flex-direction: column; /* stack bottom links */
+    align-items: center;
+  }
+
+  .sb__footer-below-links {
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5em 0;
   }
 }
 
