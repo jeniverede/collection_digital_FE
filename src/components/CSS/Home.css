@@ -60,7 +60,7 @@ h1 {
   background-color: #3c3c3c;
   color: #fff;
   width: 250px;
-  height: 150px;
+  height: auto;
   line-height: 26px;
   letter-spacing: 1.25px;
   padding: 10px;

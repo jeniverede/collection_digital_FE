@@ -2,17 +2,13 @@ import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./CSS/Search.css";
 import "./CSS/Pagination.css";
-import { useContext } from "react";
-import { AuthContext } from "../context/authContext";
-import { useJwt } from "react-jwt";
 import CardComponent from "./CardComponent";
 
 export default function Search({ data, setData }) {
-  const [query, setQuery] = useState("");
-  const { token } = useContext(AuthContext);
+  const [query, setQuery] = useState("jewellery");
   const [favorites, setFavorites] = useState([]);
 
-  //pagination
+  // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 9; // number of items per page
 
@@ -49,20 +45,12 @@ export default function Search({ data, setData }) {
   const endIndex = startIndex + itemsPerPage;
   const itemsToDisplay = data.slice(startIndex, endIndex);
 
-  const { decodedToken } = useJwt(token);
-  console.log("decoded TOKEN", decodedToken);
   console.log(favorites);
 
   return (
     <>
       <div className="search_container">
-        {token !== null && (
-          <>
-            <div className="heading">
-              <h1 className="hello">Hello, {decodedToken?.name}!</h1>
-            </div>
-          </>
-        )}
+        {/* Search Bar */}
         <div className="searchbar_container">
           <label
             style={{
@@ -100,10 +88,12 @@ export default function Search({ data, setData }) {
           />
         </div>
 
+        {/* Results Info */}
         <div className="search_results_container">
           <h1>{`Most Popular : ${data.length} Items found`}</h1>
         </div>
 
+        {/* Cards */}
         <div className="card_container">
           {itemsToDisplay.map((record) => (
             <CardComponent
@@ -114,9 +104,12 @@ export default function Search({ data, setData }) {
             />
           ))}
         </div>
+
         {data.length === 0 && (
           <h3 style={{ color: "white" }}>No results found for "{query}".</h3>
         )}
+
+        {/* Pagination */}
         <div className="pagination">
           <button
             className="pagi-button"
@@ -137,3 +130,10 @@ export default function Search({ data, setData }) {
     </>
   );
 }
+
+
+
+
+
+
+

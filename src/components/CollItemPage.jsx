@@ -1,61 +1,55 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { CollectionsContext } from "../context/collectionsContext";
-import { useContext } from "react";
+import { useParams, Link } from "react-router-dom";
+import collectionsData from "../data/collections.json";
 import "./CSS/CollItemPage.css";
 
 export default function CollItemPage() {
-  const { collections } = useContext(CollectionsContext);
-  console.log("collections inside item page", collections);
-  const { id } = useParams();
+  const { id } = useParams(); // item id from URL
 
-  let foundItem = null;
+  // Flatten all items and attach their collection id
+  const allItems = collectionsData.flatMap((collection) =>
+    collection.items.map((item) => ({ ...item, collectionId: collection.id }))
+  );
 
-  if (collections) {
-    for (const collection of collections) {
-      if (collection.items && Array.isArray(collection.items)) {
-        for (const item of collection.items) {
-          if (item._id === id) {
-            foundItem = item;
-            break;
-          }
-        }
-      }
+  const item = allItems.find((i) => i.id === id);
 
-      if (foundItem) {
-        break;
-      }
-    }
+  if (!item) {
+    return <h2 style={{ color: "white" }}>Item not found</h2>;
   }
-
-  const navigate = useNavigate();
-
-  console.log(foundItem);
 
   return (
     <>
+      <div>
+        {/* Back to collection link */}
+        <Link
+          to={`/collection/${item.collectionId}`}
+          style={{ color: "white", display: "block", marginTop: "20px" }}
+        >
+          ← Back to collection
+        </Link>
+      </div>
       <div className="collitempage_container">
-        <div>
-          <span onClick={() => navigate(-1)}>
-            <img className="arrow-image" src="/arrow-back.png" alt="back" />
-          </span>
-        </div>
-        <div className="card_image">
-          <img
-            src={foundItem.cloudinaryUrl}
-            alt="image album cover" />
-        </div>
+        {/* Item Title */}
+        <h1>{item.object_type}</h1>
+
+        {/* Item Card */}
         <div className="item_card_container">
           <div className="card">
-            <ul className="card_text">
-              <li><h3 className="item_name"> Title/Object Type :</h3>{foundItem.object_type}</li>
-              <li><h3 className="card_description">Artist/Maker : </h3>{foundItem.artist_maker}</li>
-              <li><h3 className="card_description">Origin : </h3>{foundItem.origin}</li>
-              <li><h3 className="card_description">Date : </h3>{foundItem.primary_date}</li>
-            </ul>
+            <img
+              className="card_image"
+              src={item.cloudinaryUrl}
+              alt={item.object_type}
+            />
+            <div className="card_text">
+              <p><strong>Maker:</strong> {item.artist_maker}</p>
+              <p><strong>Date:</strong> {item.primary_date}</p>
+              <p><strong>Origin:</strong> {item.origin}</p>
+            </div>
           </div>
 
+          {/* Actions */}
           <div className="actions_container">
             <button className="button-2" type="submit">Edit Item</button>
+            <button className="button-2" type="submit">Delete Item</button>
             <button className="button-2" type="submit">Print</button>
             <button className="button-2" type="submit">Preview</button>
             <hr />
@@ -64,24 +58,42 @@ export default function CollItemPage() {
             <div className="social_media_icons">
               <div className="social1">
                 <a href="/Facebook">
-                  <img className="social-containerf" src="/Facebook.svg" />
+                  <img className="social-containerf" src="/Facebook.svg" alt="Facebook" />
                 </a>
               </div>
               <div className="social1">
                 <a href="/Twitter">
-                  <img className="social-containert" src="/Twitter.svg" />
+                  <img className="social-containert" src="/Twitter.svg" alt="Twitter" />
                 </a>
               </div>
               <div className="social1">
                 <a href="/Instagram">
-                  <img className="social-containeri" src="/Instagram.svg" />
+                  <img className="social-containeri" src="/Instagram.svg" alt="Instagram" />
                 </a>
               </div>
             </div>
           </div>
-
+        </div>
+        <div>
+          <p style={{ marginTop: 20, color: "grey" }}>
+            * This is a read-only demo of items. Actions like edit, delete, print and preview are intentionally disabled.
+          </p>
+        </div>
+        <div>
+          {/* Back to collection link */}
+          <Link
+            to={`/collection/${item.collectionId}`}
+            style={{ color: "white", display: "block", marginTop: "20px" }}
+          >
+            ← Back to collection
+          </Link>
         </div>
       </div>
     </>
   );
 }
+
+
+
+
+

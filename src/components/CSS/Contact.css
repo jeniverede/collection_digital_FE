@@ -14,7 +14,7 @@
   padding: 10px;
   border-radius: 5px;
   outline: none;
-  font-family: Arial;
+  font-family: Montserrat, sans-serif;
 }
 
 .send_button {
@@ -39,7 +39,7 @@
 
 /* mobile */
 @media (max-width: 600px) {
-  .contact_page_container{
+  .contact_page_container {
     width: 80%;
     padding-left: 20px;
     padding-right: 20px;
@@ -48,7 +48,7 @@
 
 /* tablet */
 @media (max-width: 1023px) {
-  .contact_page_container{
+  .contact_page_container {
     padding-left: 20px;
     padding-right: 20px;
   }

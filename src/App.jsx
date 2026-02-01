@@ -1,26 +1,24 @@
-import { useContext, useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
-import { AuthContext } from "./context/authContext";
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./App.css";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import SearchResultsItem from "./components/SearchResultsItem";
+
+// Components
 import Home from "./components/Home";
 import Search from "./components/Search";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import Error from "./components/Error";
-import About from "./components/About";
 import Collection from "./components/Collection";
-import Pricing from "./components/Pricing";
-import Contact from "./components/Contact";
 import CollectionView from "./components/CollectionView";
 import CollItemPage from "./components/CollItemPage";
+import SearchResultsItem from "./components/SearchResultsItem";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import About from "./components/About";
+import Pricing from "./components/Pricing";
+import Contact from "./components/Contact";
+
+import Error from "./components/Error";
 
 function App() {
-  const { token } = useContext(AuthContext);
-  // const [selectedColl, setSelectedColl] = useState(null);
-
   const [data, setData] = useState([]);
 
   return (
@@ -30,56 +28,34 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
 
-        <Route
-          path="/search"
-          element={
-            token ? (
-              <Search data={data} setData={setData} />
-            ) : (
-              <Navigate to="/" />
-            )
-          }
-        />
+        {/* Search page */}
+        <Route path="/search" element={<Search data={data} setData={setData} />} />
 
-        <Route
-          path="/collection"
-          element={token ? <Collection /> : <Navigate to="/" />}
-        />
+        {/* Collections */}
+        <Route path="/collection" element={<Collection />} />
+        <Route path="/collection/:id" element={<CollectionView />} />
 
-        <Route
-          path="/collection/:id"
-          element={token ? <CollectionView /> : <Navigate to="/" />}
-        />
-        <Route
-          path="/item/:id"
-          element={token ? <CollItemPage /> : <Navigate to="/" />}
-        />
+        {/* Individual collection item page */}
+        <Route path="/item/:id" element={<CollItemPage />} />
 
-        <Route
-          path="/user/login"
-          element={!token ? <Login /> : <Navigate to="/collection" />}
-        />
+        {/*
+  Login/Signup
+  <Route path="/user/login" element={<Login />} />
+  <Route path="/user/signup" element={<Signup />} />
+*/}
 
-        <Route
-          path="/user/signup"
-          element={!token ? <Signup /> : <Navigate to="/collection" />}
-        />
 
+        {/* Search result item page */}
         {data.length > 0 && (
-          <Route
-            path="/itempage/:systemNumber"
-            element={
-              token ? <SearchResultsItem data={data} /> : <Navigate to="/search" />
-            }
-          />
+          <Route path="/itempage/:systemNumber" element={<SearchResultsItem data={data} />} />
         )}
 
+        {/* Other pages */}
         <Route path="/pricing" element={<Pricing />} />
-
         <Route path="/about" element={<About />} />
-
         <Route path="/contact" element={<Contact />} />
 
+        {/* Fallback */}
         <Route path="*" element={<Error />} />
       </Routes>
 
@@ -89,3 +65,7 @@ function App() {
 }
 
 export default App;
+
+
+
+

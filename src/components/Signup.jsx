@@ -1,42 +1,29 @@
-import { useState, useContext } from "react";
-import { AuthContext } from "../context/authContext";
+/* import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./CSS/Signup.css";
-import { NavLink } from "react-router-dom";
 
-export default function Signup({ setUser }) {
+export default function Signup({ setDemoUser }) {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  const { login } = useContext(AuthContext);
-
-  const deployedAPI = "https://collectiondigitalbe.onrender.com/user/signup";
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setError(null);
 
-    try {
-      const response = await fetch(deployedAPI, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, username }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.error);
-        return;
-      }
-
-      localStorage.setItem("token", data.token);
-      login(data.token);
-    } catch (err) {
-      console.error("Signup Error:", err);
-      setError("Something went wrong. Please try again.");
+    if (!username || !email || !password) {
+      setError("Please fill in all fields");
+      return;
     }
+
+    // Save demo user locally
+    const demoName = username || email;
+    localStorage.setItem("demoUser", demoName);
+    setDemoUser(demoName);
+
+    setError(null);
+    navigate("/collection"); // go to collections page
   };
 
   return (
@@ -71,12 +58,18 @@ export default function Signup({ setUser }) {
           value={password}
         />
 
-        <button type="submit">Sign up</button>
+        <button type="submit">Sign up (Demo)</button>
+
         {error && <div className="error">{error}</div>}
+
+        <p style={{ color: "orange", marginTop: "10px" }}>
+          ⚠️ Demo mode: signup does not connect to backend
+        </p>
       </form>
     </div>
   );
-}
+} */
+
 
 
 

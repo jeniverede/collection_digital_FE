@@ -15,7 +15,7 @@ function CardComponent({ record, favorites, setFavorites }) {
   };
 
   /* console.log(favorites); */
-  
+
   return (
     <div className="item_card" >
       <div className="img_card">
@@ -37,8 +37,8 @@ function CardComponent({ record, favorites, setFavorites }) {
         </p>
         {
           favorites.includes(record.systemNumber) ?
-          <FaHeart className="favorite" onClick={removeFavorite} /> :
-          <FaHeart className="white" onClick={addToFavorites} />
+            <FaHeart className="favorite" onClick={removeFavorite} /> :
+            <FaHeart className="white" onClick={addToFavorites} />
         }
       </div>
 
@@ -47,3 +47,6 @@ function CardComponent({ record, favorites, setFavorites }) {
 }
 
 export default CardComponent;
+
+
+

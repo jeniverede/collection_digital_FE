@@ -13,13 +13,16 @@ export default function Home() {
           color: "white",
         }}
       >
+        <p style={{ textAlign: "right", color: "grey", width: "100%" }}>
+          * This site is currently a front-end only demo project.
+        </p>
         <h1 style={{ marginBottom: "2%" }}>Welcome to Collection Digital</h1>
         <h3>Share your passion for collecting with others</h3>
       </div>
 
       <h2 className="homepage_card_section_header" style={{ marginTop: "2%", marginBottom: "2%", color: "white" }}>
-          What we offer
-        </h2>
+        What we offer
+      </h2>
 
       <div className="homepage_card_container">
         <div className="homepage_card">

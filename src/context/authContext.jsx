@@ -1,51 +1,16 @@
-import { useState, useEffect, createContext } from "react";
-import { jwtDecode } from "jwt-decode";
+/* import { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
-export default function AuthContextProvider(props) {
-  const [token, setToken] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-
-    if (storedToken) {
-      setToken(storedToken);
-    }
-
-    setLoading(false); // Set loading to false once the token retrieval is complete
-  }, []);
-
-  useEffect(() => {
-    if (token) {
-      localStorage.setItem("token", token);
-    } else {
-      localStorage.removeItem("token");
-    }
-  }, [token]);
-
-  const login = (newToken) => {
-    setToken(newToken);
-  };
-
-  const logout = () => {
-    setToken(null);
-  };
-
-  const decoded = token && jwtDecode(token);
-
-  console.log("IN CONTEXT DECODED", decoded);
+export default function AuthContextProvider({ children }) {
+  // In demo mode, just set a fake token and a demo user name
+  const [token] = useState("demo-token"); // fake token to satisfy your Collection.jsx
+  const [decoded] = useState({ name: "Demo User" }); // decoded token placeholder
 
   return (
-    <AuthContext.Provider value={{ token, login, logout, decoded }}>
-      {loading ? (
-        // Render a loading state or spinner while waiting for the token
-        <div>Loading...</div>
-      ) : (
-        // Render the child components once the token is retrieved
-        props.children
-      )}
+    <AuthContext.Provider value={{ token, decoded }}>
+      {children}
     </AuthContext.Provider>
   );
-}
+} */
+

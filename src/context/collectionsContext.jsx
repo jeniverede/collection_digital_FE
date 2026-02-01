@@ -1,46 +1,18 @@
-import { useState, useEffect, createContext, useContext } from "react";
-import { AuthContext } from "./authContext";
+// src/context/collectionsContext.jsx
+import { useState, useEffect, createContext } from "react";
+import collectionsData from "../data/collections.json"; // adjust path if needed
 
 export const CollectionsContext = createContext();
 
 export default function CollectionsContextProvider(props) {
-  const { token } = useContext(AuthContext);
-
-  console.log("TOKEN IN COLL CONT", token);
-
-  const [collections, setCollections] = useState(null);
-  const [flag, setFlag] = useState(false);
-
-  const getCollections = async () => {
-    try {
-      const res = await fetch(
-        `https://collectiondigitalbe.onrender.com/collections/`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      if (res.status === 401) {
-        // Handle unauthorized access
-        console.error("Unauthorized access");
-        return;
-      }
-
-      const data = await res.json();
-      setCollections(data.collections);
-    } catch (error) {
-      console.error("Error fetching collections:", error);
-    }
-  };
+  // Initialize collections state from JSON
+  const [collections, setCollections] = useState([]);
+  const [flag, setFlag] = useState(false); // used to force re-renders if needed
 
   useEffect(() => {
-    if (token) {
-      getCollections();
-    }
-  }, [token, flag]);
+    // Simulate fetching data (from local JSON)
+    setCollections(collectionsData);
+  }, [flag]); // flag can trigger reloads if needed
 
   return (
     <CollectionsContext.Provider value={{ collections, setFlag, flag }}>
@@ -48,3 +20,6 @@ export default function CollectionsContextProvider(props) {
     </CollectionsContext.Provider>
   );
 }
+
+
+

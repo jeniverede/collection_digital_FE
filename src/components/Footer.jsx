@@ -63,7 +63,7 @@ export default function Footer() {
                   {" "}
                   here
                 </a>{" "}
-                to access the data
+                to access the data.
               </p>
             </div>
           </div>

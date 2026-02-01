@@ -1,0 +1,42 @@
+[
+  {
+    "id": "vinyl-records",
+    "name": "Vinyl Records",
+    "description": "Duran Duran",
+    "cloudinaryUrl": "https://res.cloudinary.com/dvoaxdu73/image/upload/v1699385596/Collection%20Digital/axzi0nruhtr5zekqxyoj.png",
+    "items": [
+      {
+        "id": "duran-duran-1981",
+        "artist_maker": "Duran Duran",
+        "object_type": "Duran Duran",
+        "origin": "England",
+        "primary_date": "15 June 1981",
+        "cloudinaryUrl": "https://res.cloudinary.com/dvoaxdu73/image/upload/v1699387499/Collection%20Digital/zdhyxb6wultoqjvwuphe.png"
+      },
+      {
+        "id": "rio-1982",
+        "artist_maker": "Duran Duran",
+        "object_type": "Rio",
+        "origin": "England",
+        "primary_date": "10 May 1982",
+        "cloudinaryUrl": "https://res.cloudinary.com/dvoaxdu73/image/upload/v1699387531/Collection%20Digital/elicuv2s3neizwer0kf9.jpg"
+      },
+      {
+        "id": "seven-1983",
+        "artist_maker": "Duran Duran",
+        "object_type": "Seven and the Ragged Tiger",
+        "origin": "England",
+        "primary_date": "21 November 1983",
+        "cloudinaryUrl": "https://res.cloudinary.com/dvoaxdu73/image/upload/v1699387617/Collection%20Digital/pcaxvmqe2b3jqddaea2f.jpg"
+      },
+      {
+        "id": "notorious-1986",
+        "artist_maker": "Duran Duran",
+        "object_type": "Notorious",
+        "origin": "England",
+        "primary_date": "21 November 1986",
+        "cloudinaryUrl": "https://res.cloudinary.com/dvoaxdu73/image/upload/v1699442171/Collection%20Digital/pekpf5wr5nbto8fgok8r.png"
+      }
+    ]
+  }
+]
