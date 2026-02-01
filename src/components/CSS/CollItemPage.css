@@ -109,18 +109,17 @@ hr {
   .item_card_container {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: auto;
   }
 
-  /*   .card {
-    width: 100%;
-    padding-top: 30px;
-  } */
+  .card {
+  flex-direction: column;
+  width: 100%;
+  }
 
-  /*   .actions_container {
-    width: 100%; 
-    align-items: center; 
-  } */
+  .actions_container {
+    width: 100%;    /* ensures full width */
+  }
 }
 
 /* tablet */
