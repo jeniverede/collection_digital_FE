@@ -19,7 +19,6 @@ const Card = styled.div`
   text-align: center;
   width: auto;
   height: 400px;
-  border-radius: 10px;
   cursor: pointer;
   background: #3c3c3c;
 `;
