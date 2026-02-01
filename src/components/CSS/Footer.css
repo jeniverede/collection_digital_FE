@@ -118,7 +118,7 @@
 /* Bottom footer */
 .sb__footer-below {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   margin-top: 0.2rem;
   width: 80%;
@@ -142,9 +142,11 @@
 
 .botline {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* keep items side by side on desktop */
-  margin: 1em 0 1em 0; /* space above and below, remove left margin */
+  flex-direction: row; /* row for side-by-side links */
+  justify-content: space-evenly; /* space across the container */
+  align-items: center; /* vertically center inside container */
+  margin: 1em 0;
+  width: 100%;
 }
 
 /* Links */
@@ -187,6 +189,7 @@ a:hover,
   }
 
   .sb__footer-below {
+    display: flex;
     flex-direction: column;
     align-items: center;
   }
@@ -207,6 +210,14 @@ a:hover,
 
   .social1 {
     margin: 0;
+  }
+
+  .botline {
+    display: flex;
+    flex-direction: column; /* stack links vertically */
+    align-items: center;
+    gap: 0.5em; /* spacing between stacked links */
+    margin: 0.5em 0;
   }
 }
 
