@@ -19,7 +19,7 @@ const Card = styled.div`
   align-items: center;
   text-align: center;
   width: 250px;
-  height: 450px;
+  height: auto;
   cursor: pointer;
   background: #3c3c3c;
   border-radius: 10px;
@@ -64,8 +64,8 @@ export default function CollectionView() {
         </Link>
       </div>
       <div className="collection_view">
-        <h1 style={{ margin: "20px", color: "#03c8c8" }}>{collection.name}</h1>
-        <p style={{ margin: "20px", color: "white" }}>{collection.description}</p>
+        <h1 style={{ margin: "10px", color: "#03c8c8" }}>{collection.name}</h1>
+        <p style={{ margin: "10px", color: "white" }}>{collection.description}</p>
 
         <CardsContainer>
           {collection.items.map((item) => (

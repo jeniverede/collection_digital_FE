@@ -13,13 +13,13 @@
   text-align: end;
 }
 
-.arrow-image  {
+.arrow-image {
   width: 36px;
 }
 
 .card_container {
   margin: 20px;
-} 
+}
 .heading {
   display: flex;
   flex-direction: column;
