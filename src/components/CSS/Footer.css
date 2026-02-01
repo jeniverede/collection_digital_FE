@@ -131,6 +131,11 @@ a:hover {
 
 /* mobile */
 @media (max-width: 600px) {
+  .sb__footer {
+    flex-direction: column; /* stack columns on mobile */
+    align-items: center; /* optional: center children horizontally */
+    gap: 1em; /* optional: spacing between stacked children */
+  }
   .sb__footer-heading h1 {
     font-size: 27px;
     line-height: 38px;
