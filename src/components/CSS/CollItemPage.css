@@ -113,13 +113,11 @@ hr {
   }
 
   .card {
-  flex-direction: column;
   width: 100%;
   }
 
   .actions_container {
     width: 100%;    /* ensures full width */
-    align-items: stretch;
   }
 }
 
