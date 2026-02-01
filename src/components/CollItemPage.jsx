@@ -83,7 +83,7 @@ export default function CollItemPage() {
           {/* Back to collection link */}
           <Link
             to={`/collection/${item.collectionId}`}
-            style={{ color: "white", display: "block", marginTop: "20px" }}
+            style={{ color: "white", display: "block", margin: "20px" }}
           >
             ← Back to collection
           </Link>

@@ -58,7 +58,7 @@ export default function Collection() {
         )}
       </CardsContainer>
       <div>
-        <p style={{ marginTop: 20, color: "grey" }}>
+        <p style={{ margin: 20, color: "grey" }}>
         * This is a read-only demo of collections. Actions like add, edit, delete are intentionally disabled.
       </p>
       </div>
