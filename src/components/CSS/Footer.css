@@ -1,16 +1,19 @@
 .sb__footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* columns side by side on desktop */
   background-color: #3c3c3c;
   width: 90%;
+  max-width: 1200px; /* optional: keeps footer from being too wide on large screens */
   justify-content: center;
-  border-top: 1px solid white;
-  margin-top: 2em;
+  margin: 2em auto 0; /* centers footer horizontally */
+  gap: 2em; /* space between columns */
+  flex-wrap: wrap; /* allows columns to wrap if they are too wide */
 }
 .sb__footer-padding {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border-top: 1px solid white;
   border-bottom: 1px solid white;
 }
 .centering {
