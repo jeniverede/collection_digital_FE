@@ -58,7 +58,7 @@ export default function CollectionView() {
       <div>
         <Link
           to="/collection"
-          style={{ color: "white", marginTop: "20px", display: "inline-block" }}
+          style={{ color: "white", margin: "20px", display: "inline-block" }}
         >
           ← Back to all collections
         </Link>
