@@ -106,21 +106,21 @@ hr {
     margin-bottom: 20px;
   }
 
-  .item_card_container {
+/*   .item_card_container {
     display: flex;
     flex-direction: column;
     width: auto;
-  }
+  } */
 
-  .card {
+/*   .card {
     width: 100%;
-    padding-top: 20px;
-  }
+    padding-top: 30px;
+  } */
 
-  .actions_container {
-    width: 100%; /* ensures full width */
-    align-items: center; /* if you want content centered inside */
-  }
+/*   .actions_container {
+    width: 100%; 
+    align-items: center; 
+  } */
 }
 
 /* tablet */
