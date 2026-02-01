@@ -64,8 +64,8 @@ export default function CollectionView() {
         </Link>
       </div>
       <div className="collection_view">
-        <h1 style={{ color: "#03c8c8" }}>{collection.name}</h1>
-        <p style={{ color: "white" }}>{collection.description}</p>
+        <h1 style={{ margin: "20px", color: "#03c8c8" }}>{collection.name}</h1>
+        <p style={{ margin: "20px", color: "white" }}>{collection.description}</p>
 
         <CardsContainer>
           {collection.items.map((item) => (
