@@ -40,7 +40,7 @@ const CardDescription = styled.p`
 export default function Collection() {
   return (
     <div className="collection_header">
-      <h1>Welcome to your collections!</h1>
+      <h1 style={{ margin: 20 }}>Welcome to your collections!</h1>
 
       <CardsContainer>
         {collectionsData.length > 0 ? (
@@ -59,8 +59,8 @@ export default function Collection() {
       </CardsContainer>
       <div>
         <p style={{ margin: 20, color: "grey" }}>
-        * This is a read-only demo of collections. Actions like add, edit, delete are intentionally disabled.
-      </p>
+          * This is a read-only demo of collections. Actions like add, edit, delete are intentionally disabled.
+        </p>
       </div>
     </div>
   );
