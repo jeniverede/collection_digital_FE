@@ -115,6 +115,7 @@ hr {
   .card {
   flex-direction: column;
   width: 100%;
+  padding: 30px;
   }
 
   .actions_container {
