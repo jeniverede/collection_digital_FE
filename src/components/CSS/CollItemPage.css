@@ -119,6 +119,7 @@ hr {
 
   .actions_container {
     width: 100%;    /* ensures full width */
+    align-items: stretch;
   }
 }
 
