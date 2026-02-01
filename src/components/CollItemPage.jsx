@@ -75,7 +75,7 @@ export default function CollItemPage() {
           </div>
         </div>
         <div>
-          <p style={{ marginTop: 20, color: "grey" }}>
+          <p style={{ margin: 20, color: "grey" }}>
             * This is a read-only demo of items. Actions like edit, delete, print and preview are intentionally disabled.
           </p>
         </div>
