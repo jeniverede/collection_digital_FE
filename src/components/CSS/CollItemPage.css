@@ -118,7 +118,6 @@ hr {
   }
 
   .actions_container {
-    flex: 1 1 auto; /* fill the width of parent */
     width: 100%;    /* ensures full width */
   }
 }
