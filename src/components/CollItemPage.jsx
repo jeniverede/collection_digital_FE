@@ -18,16 +18,18 @@ export default function CollItemPage() {
 
   return (
     <>
-      <div>
-        {/* Back to collection link */}
-        <Link
-          to={`/collection/${item.collectionId}`}
-          style={{ color: "white", display: "block", marginTop: "20px", marginLeft: "20px" }}
-        >
-          ← Back to collection
-        </Link>
-      </div>
       <div className="collitempage_container">
+
+        <div>
+          {/* Back to collection link */}
+          <Link
+            to={`/collection/${item.collectionId}`}
+            style={{ color: "white", display: "block", marginTop: "20px" }}
+          >
+            ← Back to collection
+          </Link>
+        </div>
+
         {/* Item Title */}
         <h1>{item.object_type}</h1>
 
@@ -53,7 +55,7 @@ export default function CollItemPage() {
             <button className="button-2" type="submit">Print</button>
             <button className="button-2" type="submit">Preview</button>
             <hr />
-            <li>Share on your social media</li>
+            <h4>Share on your social media</h4>
 
             <div className="social_media_icons">
               <div className="social1">
@@ -83,7 +85,7 @@ export default function CollItemPage() {
           {/* Back to collection link */}
           <Link
             to={`/collection/${item.collectionId}`}
-            style={{ color: "white", display: "block", margin: "20px" }}
+            style={{ color: "white", display: "block", marginTop: "20px" }}
           >
             ← Back to collection
           </Link>

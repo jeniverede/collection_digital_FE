@@ -1,15 +1,27 @@
 .collitempage_container {
-  margin-left: 20px;
+  margin: 10px;
 }
 
 .item_card_container {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 20px;
+  gap: 2rem;
 }
 
-.arrow-image {
-  width: 36px;
+.card,
+.actions_container {
+  background: #3c3c3c;
+  flex: 1; /* each card takes equal share */
+  min-width: 0;
+  padding: 20px; /* added padding around content */
+  border-radius: 0;
+  color: white;
+
+  /* NEW: center content inside each card */
+  display: flex; /* make it a flex container */
+  flex-direction: column; /* stack children vertically */
+  align-items: center; /* center horizontally */
+  justify-content: center; /* center vertically if needed */
+  gap: 1rem;
 }
 
 .card_image {
@@ -19,49 +31,22 @@
   margin: auto;
 }
 
-.card {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  background: #3c3c3c;
-  border-radius: 0;
-}
-
 .card_text {
   color: #fff;
   font-size: 20px;
   display: flex;
   flex-direction: column;
-}
-
-h3 {
-  margin-bottom: 10px;
-}
-
-.card_text {
-  color: #fff;
-  font-size: 20px;
   margin: 20px;
   align-items: center;
 }
 
-.actions_container {
-  background-color: #3c3c3c;
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.action {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+h4 {
+  margin-bottom: 10px;
 }
 
 hr {
   width: 80%;
+  color: white;
 }
 
 .action_click {
@@ -75,8 +60,10 @@ hr {
 
 .social_media_icons {
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 20px;
+  justify-content: space-between; /* spread icons across the width */
+  width: 100%;                    /* take full width of parent */
+  max-width: 300px;               /* optional: prevent too much stretching */
+  gap: 1rem;        
 }
 
 .button-2 {
@@ -100,34 +87,26 @@ hr {
 
 /* mobile */
 @media (max-width: 600px) {
-  .collitempage_container {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 20px;
-  }
-
   .item_card_container {
     display: flex;
     flex-direction: column;
-    width: auto;
+    gap: 1.5rem; /* spacing between cards */
+    width: 100%;
   }
 
-  .card {
-  flex-direction: column;
-  width: 100%;
-  padding: 30px;
-  }
-
+  .card,
   .actions_container {
-    width: 100%;    /* ensures full width */
+    flex: none !important; /* remove any desktop flex ratios */
+    width: 100% !important; /* force full width */
+    max-width: 100% !important;
+    min-width: 0 !important; /* prevent old min-width from shrinking */
+  }
+
+  .social_media_icons {
+    justify-content: space-around; /* more breathing room on mobile */
   }
 }
 
 /* tablet */
 @media (max-width: 1023px) {
-  .collitempage_container {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 20px;
-  }
 }
