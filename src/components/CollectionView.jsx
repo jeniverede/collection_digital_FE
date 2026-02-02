@@ -57,14 +57,14 @@ export default function CollectionView() {
       <div>
         <Link
           to="/collection"
-          style={{ color: "white", marginTop: "10px", marginLeft: "20px", display: "inline-block" }}
+          style={{ color: "white", marginTop: "20px", marginLeft: "10px", display: "inline-block" }}
         >
           ← Back to all collections
         </Link>
       </div>
       <div className="collection_view">
-        <h1 style={{ marginLeft: "20px", color: "#03c8c8" }}>{collection.name}</h1>
-        <p style={{ marginLeft: "20px", color: "white" }}>{collection.description}</p>
+        <h1 style={{ marginLeft: "10px", color: "#03c8c8" }}>{collection.name}</h1>
+        <p style={{ marginLeft: "10px", color: "white" }}>{collection.description}</p>
 
         <CardsContainer>
           {collection.items.map((item) => (

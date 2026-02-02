@@ -3,7 +3,6 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px solid #03c8c8;
-  margin-bottom: 10px;
   height: 60px;
 }
 
@@ -86,7 +85,6 @@ li {
 
 /* mobile */
 @media (max-width: 600px) {
-
   .hamburger-menu {
     display: block;
     position: absolute; /* relative to navbar_container */
