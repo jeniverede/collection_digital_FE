@@ -6,6 +6,7 @@
   margin-bottom: 10px;
   height: 60px;
 }
+
 .logo {
   background-color: #ddd;
   width: 150px;
@@ -85,9 +86,13 @@ li {
 
 /* mobile */
 @media (max-width: 600px) {
+
   .hamburger-menu {
     display: block;
-    float: right;
+    position: absolute; /* relative to navbar_container */
+    top: 0px;
+    right: 0px;
+    z-index: 1001;
   }
 
   .nav_items_container ul {
@@ -98,6 +103,7 @@ li {
     top: 60px;
     left: 0;
     width: 100%;
+    z-index: 999; /* below hamburger */
   }
 
   .nav_items_container ul.show {
@@ -120,4 +126,3 @@ li {
     width: 30%;
   }
 }
-

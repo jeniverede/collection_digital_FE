@@ -61,9 +61,9 @@ hr {
 .social_media_icons {
   display: flex;
   justify-content: space-between; /* spread icons across the width */
-  width: 100%;                    /* take full width of parent */
-  max-width: 300px;               /* optional: prevent too much stretching */
-  gap: 1rem;        
+  width: 100%; /* take full width of parent */
+  max-width: 300px; /* optional: prevent too much stretching */
+  gap: 1rem;
 }
 
 .button-2 {
@@ -92,6 +92,8 @@ hr {
     flex-direction: column;
     gap: 1.5rem; /* spacing between cards */
     width: 100%;
+    position: relative; /* default, avoids covering menu */
+    z-index: 1; /* lower than the hamburger */
   }
 
   .card,
